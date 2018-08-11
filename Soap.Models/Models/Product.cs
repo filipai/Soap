@@ -7,7 +7,13 @@ namespace Soap.Models
     {
         public int ProductId { get; set; }
 
-        public int ProductPageId { get; set; }
+        public string Name { get; set; }
+
+        public string Brand { get; set; }
+
+        public string Description { get; set; }
+
+        public string Ingredients { get; set; }
 
         public int Amount { get; set; }
 

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Soap.Web.Data;
 
 namespace Soap.Web.Data.Migrations
 {
     [DbContext(typeof(SoapDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180811143923_CustomerOrderRelationFix")]
+    partial class CustomerOrderRelationFix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -219,6 +221,8 @@ namespace Soap.Web.Data.Migrations
                     b.Property<int>("ProductId");
 
                     b.Property<int?>("ShippingAddressId");
+
+                    b.Property<int?>("SippingAddressId");
 
                     b.Property<double>("TotalValue");
 

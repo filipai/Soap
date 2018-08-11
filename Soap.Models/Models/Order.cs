@@ -22,11 +22,7 @@ namespace Soap.Models
 
         public ICollection<Product> Products { get; set; }
 
-        public int CustomerId { get; set; }
-
         public Customer Customer { get; set; }
-
-        public int? SippingAddressId { get; set; }
 
         public ShippingAddress ShippingAddress { get; set; }
     }

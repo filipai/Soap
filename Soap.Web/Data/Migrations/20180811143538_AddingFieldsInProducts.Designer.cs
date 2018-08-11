@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Soap.Web.Data;
 
 namespace Soap.Web.Data.Migrations
 {
     [DbContext(typeof(SoapDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180811143538_AddingFieldsInProducts")]
+    partial class AddingFieldsInProducts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -210,7 +212,9 @@ namespace Soap.Web.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CustomerId");
+                    b.Property<int>("CustomerId");
+
+                    b.Property<string>("CustomerId1");
 
                     b.Property<string>("Name");
 
@@ -220,11 +224,13 @@ namespace Soap.Web.Data.Migrations
 
                     b.Property<int?>("ShippingAddressId");
 
+                    b.Property<int?>("SippingAddressId");
+
                     b.Property<double>("TotalValue");
 
                     b.HasKey("OrderId");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("CustomerId1");
 
                     b.HasIndex("ShippingAddressId");
 
@@ -351,7 +357,7 @@ namespace Soap.Web.Data.Migrations
                 {
                     b.HasOne("Soap.Models.Customer", "Customer")
                         .WithMany("Orders")
-                        .HasForeignKey("CustomerId");
+                        .HasForeignKey("CustomerId1");
 
                     b.HasOne("Soap.Models.ShippingAddress", "ShippingAddress")
                         .WithMany()
