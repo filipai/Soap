@@ -11,7 +11,9 @@ namespace Soap.Models
 
         public int Amount { get; set; }
 
-        public double CurrentPrice { get; set; }
+        public decimal BasePrice { get; set; }
+
+        public decimal CurrentPrice { get; set; }
 
         public int OrderId { get; set; }
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
 
 namespace Soap.Models
 {
@@ -7,5 +8,9 @@ namespace Soap.Models
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
+
+        public int OrderId { get; set; }
+
+        public ICollection<Order> Orders { get; set; }
     }
 }
