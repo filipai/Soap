@@ -14,4 +14,8 @@
     <Folder Include="Areas\Identity\Services\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Soap.Models\Soap.Models.csproj" />
+  </ItemGroup>
+
 </Project>

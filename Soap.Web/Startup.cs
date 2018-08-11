@@ -34,11 +34,11 @@ namespace Soap.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<SoapDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("SoapConnection")));
             services.AddDefaultIdentity<IdentityUser>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<SoapDbContext>();
 
             services.Configure<IdentityOptions>(options =>
             {
