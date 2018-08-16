@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Soap.Web.Data;
 
-namespace Soap.Web.Data.Migrations
+namespace Soap.Web.Migrations
 {
     [DbContext(typeof(SoapDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180816191815_RemouveIngredients")]
+    partial class RemouveIngredients
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -197,16 +199,14 @@ namespace Soap.Web.Data.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("ProductId");
-
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("Soap.Models.Order", b =>
                 {
-                    b.Property<int>("OrderId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -222,46 +222,46 @@ namespace Soap.Web.Data.Migrations
 
                     b.Property<double>("TotalValue");
 
-                    b.HasKey("OrderId");
+                    b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
 
                     b.HasIndex("ShippingAddressId");
 
-                    b.ToTable("Order");
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("Soap.Models.Product", b =>
                 {
-                    b.Property<int>("ProductId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("Amount");
 
                     b.Property<decimal>("BasePrice");
 
                     b.Property<string>("Brand");
 
-                    b.Property<int>("CategoryId");
+                    b.Property<int?>("CategoryId");
 
                     b.Property<decimal>("CurrentPrice");
 
                     b.Property<string>("Description");
 
-                    b.Property<string>("Ingredients");
+                    b.Property<string>("ImageURL");
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("OrderId");
+                    b.Property<int?>("OrderId");
 
-                    b.HasKey("ProductId");
+                    b.Property<int>("Quantity");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("Product");
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Soap.Models.ShippingAddress", b =>
@@ -284,7 +284,7 @@ namespace Soap.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ShippingAddress");
+                    b.ToTable("ShippingAddresses");
                 });
 
             modelBuilder.Entity("Soap.Models.Customer", b =>
@@ -361,14 +361,12 @@ namespace Soap.Web.Data.Migrations
             modelBuilder.Entity("Soap.Models.Product", b =>
                 {
                     b.HasOne("Soap.Models.Category", "Category")
-                        .WithMany("Proucts")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .WithMany()
+                        .HasForeignKey("CategoryId");
 
                     b.HasOne("Soap.Models.Order", "Order")
                         .WithMany("Products")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("OrderId");
                 });
 #pragma warning restore 612, 618
         }

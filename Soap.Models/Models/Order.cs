@@ -10,7 +10,7 @@ namespace Soap.Models
             this.Products = new List<Product>();
         }
 
-        public int OrderId { get; set; }
+        public int Id { get; set; }
 
         public string Name { get; set; }
 

@@ -1,21 +1,21 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Soap.Web.Data.Migrations
+namespace Soap.Web.Migrations
 {
-    public partial class ShippingAddresFix : Migration
+    public partial class RemouveIngredients : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "SippingAddressId",
-                table: "Order");
+                name: "Ingredients",
+                table: "Products");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
-                name: "SippingAddressId",
-                table: "Order",
+            migrationBuilder.AddColumn<string>(
+                name: "Ingredients",
+                table: "Products",
                 nullable: true);
         }
     }

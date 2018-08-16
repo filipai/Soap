@@ -11,14 +11,14 @@ namespace Soap.Web.Data
         {
         }
 
-        public DbSet<Customer> Customer { get; set; }
+        public DbSet<Customer> Customers { get; set; }
 
-        public DbSet<Order> Order { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
-        public DbSet<Product> Product { get; set; }
+        public DbSet<Product> Products { get; set; }
 
-        public DbSet<Category> Category { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
-        public DbSet<ShippingAddress> ShippingAddress { get; set; }
+        public DbSet<ShippingAddress> ShippingAddresses { get; set; }
     }
 }

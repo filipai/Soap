@@ -1,0 +1,15 @@
+﻿@page "{id}"
+@model Soap.Web.Pages.Shop.Products.DetailsModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>@Model.Name</h2>
+<h3>@Model.Brand</h3>
+<h4>@Model.Category</h4>
+<img src="@Model.ImageURL" alt="Cover image for @Model.Name" width="200" height="200"/>
+<p>@Model.Description</p>
+<p>@Model.Quantity</p>
+<p>@Model.BasePrice</p>
+<p>@Model.CurrentPrice</p>
+

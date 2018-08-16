@@ -1,0 +1,48 @@
+﻿@page
+@model Soap.Web.Pages.Shop.Products.Add
+@{
+    ViewData["Title"] = "Add Product";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control">
+    </div>
+    <div class="form-group">
+        <label asp-for="Brand"></label>
+        <input asp-for="Brand" class="form-control">
+    </div>
+    <div class="form-group">
+        <label asp-for="Category"></label>
+        <input asp-for="Category" class="form-control">
+    </div>
+    @*<div class="form-group">
+            <label asp-for="Category"></label>
+            <select asp-for="Category" asp-items="@new SelectList(Model.)">
+            </select>
+        </div>*@
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+        <label asp-for="ImageURL"></label>
+        <input asp-for="ImageURL" class="form-control" rows="3">
+    </div>
+    <div class="form-group">
+        <label asp-for="Quantity"></label>
+        <input asp-for="Quantity" class="form-control">
+    </div>
+    <div class="form-group">
+        <label asp-for="BasePrice"></label>
+        <input asp-for="BasePrice" class="form-control">
+    </div>
+    <div class="form-group">
+        <label asp-for="CurrentPrice"></label>
+        <input asp-for="CurrentPrice" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary" value="Add product">Add product</button>
+</form> 
