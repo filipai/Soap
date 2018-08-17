@@ -7,17 +7,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Soap.Models;
 using Soap.Web.Data;
+using Soap.Web.Models;
 
 namespace Soap.Web.Pages.Shop.Products
 {
-    public class Add : PageModel
+    public class Add : AppPageModel
     {
-        public Add(SoapDbContext context)
+        public Add(SoapDbContext context) : base(context)
         {
-            this.Context = context;
         }
-
-        public SoapDbContext Context { get; set; }
 
         [BindProperty]
         [Display(Name = "Name", Prompt = "Add name")]

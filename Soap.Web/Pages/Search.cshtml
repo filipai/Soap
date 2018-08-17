@@ -1,0 +1,21 @@
+﻿@page
+@model Soap.Web.Pages.SearchModel
+@{
+    ViewData["Title"] = "Search";
+}
+<h4>Search results: @Model.SearchTerm</h4>
+<br />
+<div class="col-lg-12">
+    @foreach (var product in Model.SearchResults)
+    {
+        <a asp-page="/Shop/Products/Details" asp-route-id="@(product.ProductId)">
+            <div class="col-lg-4 panel col-lg-offset-1 panel-default">
+                <img class="rounded-circle center-block" src="@product.ImageUrl" alt="Generic placeholder image" width="140" height="140">
+                <h4>@product.Name</h4>
+                <a asp-page="/Shop/Products/Details" asp-route-id="@(product.ProductId)" class="btn btn-danger btn-lg pull-right" role="button"><span class="fa fa-cart-plus"></span></a>
+                <p>@product.Description</p>
+                <p class="text-right">Price: @product.CurrentPrice</p>
+            </div>
+        </a>
+    }
+</div>

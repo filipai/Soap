@@ -6,14 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Soap.Web.Data;
+using Soap.Web.Models;
 
 namespace Soap.Web.Pages.Shop.Products
 {
-    public class DetailsModel : PageModel
+    public class DetailsModel : AppPageModel
     {
-        public DetailsModel(SoapDbContext context)
+        public DetailsModel(SoapDbContext context) : base(context)
         {
-            this.Context = context;
         }
 
         public string Name { get; set; }
@@ -31,8 +31,6 @@ namespace Soap.Web.Pages.Shop.Products
         public decimal CurrentPrice { get; set; }
 
         public string Category { get; set; }
-
-        public SoapDbContext Context { get; private set; }
 
         public IActionResult OnGet(int id)
         {

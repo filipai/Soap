@@ -15,6 +15,9 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+    @*<link href="~/css/all.css" rel="stylesheet" />*@ <!--load all styles -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link href="~/css/styles.css" rel="stylesheet" />
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -26,25 +29,34 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-page="/Index" class="navbar-brand">Soap</a>
+                <a asp-page="/Index" class="navbar-brand"><span class="fa fa-shopping-cart"></span></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-page="/Index">Home</a></li>
+                    @*<li><a asp-page="/Index">Shop</a></li>*@
                     <li><a asp-page="/Shop/Products/Add">Add Product</a></li>
                     <li><a asp-page="/About">About</a></li>
                     <li><a asp-page="/Contact">Contact</a></li>
-                    @*<form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>*@
                 </ul>
+                <form asp-page="/Search" class="navbar-form navbar-left" method="get">
+                    <div class="form-group">
+                        <input type="text" name="searchTerm" class="form-control" placeholder="Product search">
+                    </div>
+                    <button type="submit" class="btn btn-success"><span class="fa fa-search"></span></button>
+                </form>
                 <partial name="_LoginPartial" />
             </div>
         </div>
     </nav>
 
     <partial name="_CookieConsentPartial" />
+
+    @*<div class="container body-content">
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><span class="fa fa-search"></span></button>
+        </form>
+    </div>*@
 
     <div class="container body-content">
         @RenderBody()
